@@ -30,24 +30,22 @@ class FlowersDetailView(View):
         return render(requset, "store/store_detail.html", {"flowers": flowersall, 
         "flowersget": flowersget })
 
-
 class Search(ListView):
     paginate_by = 3
 
     def get_queryset(self):
         return Flowers.objects.filter(title__icontains=self.request.GET.get("q"))
 
+class FlowersView(ListView):
+
+    model = Flowers
+    queryset = Flowers.objects.all()
 
 class AddReview(View):
     def post(self, request, pk):
         print(request.POST)
         return redirect("/ ")
 
-
-class FlowersView(ListView):
-    def get(self, request):
-        flowers = Flowers.objects.all()
-        return render(request, "store/store_doc.html", {"store_doc" : flowers})
 
 
 

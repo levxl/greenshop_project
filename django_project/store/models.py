@@ -37,7 +37,7 @@ class Reviews(models.Model):
     parent = models.ForeignKey(
         'self', verbose_name="Родитель", on_delete=models.SET_NULL, blank=True, null=True
     )
-    flowers = models.ForeignKey(Flowers, verbose_name="фильм", on_delete=models.CASCADE)
+    flowers = models.ForeignKey(Flowers, verbose_name="цветок", on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.name} - {self.movie}"
