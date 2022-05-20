@@ -37,14 +37,14 @@ class Search(ListView):
         return Flowers.objects.filter(title__icontains=self.request.GET.get("q"))
 
 class FlowersView(ListView):
-
-    model = Flowers
-    queryset = Flowers.objects.all()
+    def get(self, request):
+        flowers = Flowers.objects.all()
+        return render(request, "store/store_doc.html", {"store_doc" : flowers})
 
 class AddReview(View):
     def post(self, request, pk):
         print(request.POST)
-        return redirect("/ ")
+        return redirect("/")
 
 
 
