@@ -1146,6 +1146,16 @@ html {
   color: #46a358;
   font-family: "Cera Pro Bold";
 }
+.rating {
+  margin: 0 30%;
+  display: flex;
+}
+.rating img {
+  width: 3.5%;
+}
+.flowers-review  {
+margin: 0 1%;
+}
 .product-view__info-description {
   margin: 15px 0 0;
 }
@@ -1190,7 +1200,7 @@ html {
 .product-view__buy button {
   border: none;
   background: fixed;
-  font-size: 20px;
+  font-size: 22px;
   color: white;
 }
 
@@ -1218,7 +1228,7 @@ html {
 }
 .product-view__counter {
   margin: 0 12px;
-  font-size: 20px;
+  font-size: 17px;
   line-height: 10px;
 }
 .product-view__buy-button {

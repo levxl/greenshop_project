@@ -39,6 +39,14 @@
                     <div class="product-view__info-main">
                         <h2 class="product-view__title">{{ flowersget.title }}</h2>
                         <p class="product-view__price">{{ flowersget.price }}</p>
+                        <div class="rating">
+                            <img src="{% static 'images/star.svg' %}" alt="">
+                            <img src="{% static 'images/star.svg' %}" alt="">
+                            <img src="{% static 'images/star.svg' %}" alt="">
+                            <img src="{% static 'images/star.svg' %}" alt="">
+                            <img src="{% static 'images/un-star.svg' %}" alt="">
+                            <p>(10 Customer reivew)</p>
+                        </div>
                         <div id="rateYo"></div>
                     </div>
                     <div class="product-view__info-description">
@@ -63,13 +71,13 @@
                             </li>
                         </ul>
                         <div class="product-view__buy">
-                            <a href="#" class="product-view__add-minus">
-                                <img src="{% static 'images/minus.svg' %}" alt="">
-                            </a>
-                            <p class="product-view__counter">1</p>
-                            <a href="#" class="product-view__add-minus">
-                                <img src="{% static 'images/plus.svg' %}" alt="">
-                            </a>
+                            <div href="" class="product-view__add-minus">
+                                <button class="js-clear-btn">-</button>
+                            </div>
+                            <div class="product-view__counter"></div>
+                            <div href="" class="product-view__add-minus">
+                                <button class="js-inc-btn">+</button>
+                            </div>
                             <a href="#" class="product-view__buy-button button">Buy NOW</a>
                             <a href="#" class="product-view__buy-button button-invert">Add to cart</a>
                             <a href="#" class="product-view__buy-button button-invert icon-button">
