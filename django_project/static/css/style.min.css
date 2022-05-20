@@ -1187,6 +1187,13 @@ html {
   gap: 10px;
   margin: 25px 0;
 }
+.product-view__buy button {
+  border: none;
+  background: fixed;
+  font-size: 20px;
+  color: white;
+}
+
 .product-view__add-minus {
   display: -webkit-box;
   display: -ms-flexbox;
