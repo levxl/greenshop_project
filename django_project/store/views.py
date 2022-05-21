@@ -7,14 +7,11 @@ from django.views.generic import ListView
 def home(request):
     return render(request, 'store/flowers_list.html')
 
-def product(request):
-    return render(request, 'store/store_doc.html')
-
 class CategoryFilter:
     def get_category(self):
         return Category.objects.all()
 
-class FlowersView(View):
+class FlowersView(CategoryFilter, ListView):
     def get(self, request):
         flowers = Flowers.objects.all()
         return render(request, "store/store_doc.html", {"store_doc" : flowers})
@@ -35,11 +32,6 @@ class Search(ListView):
 
     def get_queryset(self):
         return Flowers.objects.filter(title__icontains=self.request.GET.get("q"))
-
-class FlowersView(ListView):
-    def get(self, request):
-        flowers = Flowers.objects.all()
-        return render(request, "store/store_doc.html", {"store_doc" : flowers})
 
 class AddReview(View):
     def post(self, request, pk):
