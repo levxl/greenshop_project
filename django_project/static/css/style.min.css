@@ -1147,11 +1147,12 @@ html {
   font-family: "Cera Pro Bold";
 }
 .rating {
-  margin: 0 30%;
+  margin: 0 25%;
   display: flex;
 }
 .rating img {
-  width: 3.5%;
+  width: 2.5%;
+  margin: 0 2.5px;
 }
 .flowers-review  {
 margin: 0 1%;
