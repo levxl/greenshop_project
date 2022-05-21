@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Flowers, Category
+from .models import *
 from django.views.generic.base import View
 from django.views.generic import ListView
 
