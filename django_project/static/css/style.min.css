@@ -1149,9 +1149,9 @@ html {
 .rating {
   overflow: hidden;
   vertical-align: bottom;
-  display: flex;
-  font-size: 15px;
-  margin: 0 10%;
+  display: inline-block;
+  width: 155px;
+  height: 30px;
 }
 
 .rating > input {
@@ -1178,9 +1178,7 @@ html {
   transition: opacity 0.2s linear;
 }
 
-.rating > label:hover:before, .rating > label:hover ~ label:before, .rating:not(:hover) > :checked ~ label:before {
-  opacity: 1;
-}
+.rating > label:hover:before,  .rating > label:hover ~ label:before,  .rating:not(:hover) > :checked ~ label:before { opacity: 1; }
 
 .flowers-review  {
 margin: 0 1%;

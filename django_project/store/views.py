@@ -6,7 +6,6 @@ from django.views.generic import ListView
 from .models import *
 
 
-
 def home(request):
     return render(request, 'store/flowers_list.html')
 
@@ -24,8 +23,6 @@ class FlowersListView(CategoryFilter, ListView):
     queryset = Flowers.objects.all()
 
 
-  
-
 class FlowersDetailView(View):
 
     def get(self, requset, slug):
@@ -34,13 +31,13 @@ class FlowersDetailView(View):
         return render(requset, "store/store_detail.html", {"flowers": flowersall, 
         "flowersget": flowersget })
 
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         context["star_form"] = RatingForm()
         return context
 
 class AddStarRating(View):
-    """Добавление рейтинга фильму"""
+    """Добавление рейтинга цветам"""
 
     def get_client_ip(self, request):
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
