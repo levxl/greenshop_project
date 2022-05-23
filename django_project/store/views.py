@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
-from .models import *
+from django.http import HttpResponse
+from .forms import RatingForm
 from django.views.generic.base import View
 from django.views.generic import ListView
+from .models import *
+
 
 
 def home(request):
@@ -24,11 +27,17 @@ class FlowersListView(CategoryFilter, ListView):
   
 
 class FlowersDetailView(View):
+
     def get(self, requset, slug):
         flowersget = Flowers.objects.get(url=slug)
         flowersall = Flowers.objects.all()
         return render(requset, "store/store_detail.html", {"flowers": flowersall, 
         "flowersget": flowersget })
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context["star_form"] = RatingForm()
+        return context
 
 class AddStarRating(View):
     """Добавление рейтинга фильму"""
@@ -46,7 +55,7 @@ class AddStarRating(View):
         if form.is_valid():
             Rating.objects.update_or_create(
                 ip=self.get_client_ip(request),
-                movie_id=int(request.POST.get("movie")),
+                flowers_id=int(request.POST.get("flowers")),
                 defaults={'star_id': int(request.POST.get("star"))}
             )
             return HttpResponse(status=201)

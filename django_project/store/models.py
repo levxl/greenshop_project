@@ -63,7 +63,7 @@ class Rating(models.Model):
     """Рейтинг"""
     ip = models.CharField("IP адрес", max_length=15)
     star = models.ForeignKey(RatingStar, on_delete=models.CASCADE, verbose_name="звезда")
-    flowers = models.ForeignKey(Flowers, on_delete=models.CASCADE, verbose_name="фильм", related_name="ratings")
+    flowers = models.ForeignKey(Flowers, on_delete=models.CASCADE, verbose_name="цветок", related_name="ratings")
 
     def __str__(self):
         return f"{self.star} - {self.movie}"
