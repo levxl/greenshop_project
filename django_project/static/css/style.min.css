@@ -2185,12 +2185,16 @@ a {
 .sort-type__list-item {
   margin-right: 40px;
   display: inline-block;
+
 }
-.sort-type__list-link {
+.sort-type__list-link  {
   position: relative;
   font-size: 15px;
   line-height: 16px;
   letter-spacing: 0.36px;
+  border: none; 
+  background: white;
+
 }
 .sort-type__list-link::after {
   position: absolute;
@@ -2203,6 +2207,7 @@ a {
   transition: width 0.4s;
   border-bottom: 2px solid #46a358;
   width: 0;
+  border: none; 
 }
 .sort-type__list-link:active,
 .sort-type__list-link:focus,
@@ -2210,11 +2215,15 @@ a {
   color: #46a358;
   font-family: "Cera Pro Bold";
   letter-spacing: 0;
+  border: none; 
 }
 .sort-type__list-link:active::after,
 .sort-type__list-link:focus::after,
 .sort-type__list-link:hover::after {
   width: 100%;
+}
+.row {
+  display: none;
 }
 .sort-type__select {
   font-size: 15px;

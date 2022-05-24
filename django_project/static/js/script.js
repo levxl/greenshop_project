@@ -27,3 +27,26 @@ clearBtnNode.addEventListener('click', () => {
 });
 
 render();
+
+const rating = document.querySelector('form[name=rating]');
+
+rating.addEventListener("change", function (e) {
+    // Получаем данные из формы
+    let data = new FormData(this);
+    fetch(`${this.action}`, {
+        method: 'POST',
+        body: data
+    })
+        .then(response => alert("Рейтинг установлен"))
+        .catch(error => alert("Ошибка"))
+});
+
+function viewDiv(){
+    document.getElementById("row").style.display = "block";
+    document.getElementById("description__wrapper").style.display = "none";
+  };
+
+function openDiv(){
+    document.getElementById("description__wrapper").style.display = "block";
+    document.getElementById("row").style.display = "none";
+  };

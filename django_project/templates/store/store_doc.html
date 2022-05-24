@@ -129,13 +129,17 @@
                 <div class="description__inner">
                     <ul class="sort-type__list">
                         <li class="sort-type__list-item">
-                            <a href="#" class="sort-type__list-link">Product Description</a>
+                            <button  type="button" onmousedown="openDiv()" class="sort-type__list-link">
+                                Product Description
+                            </button>
                         </li>
                         <li class="sort-type__list-item">
-                            <a href="#" class="sort-type__list-link">Reviews <p class="reviews-counter">19</p></a>
+                            <button  type="button" onmousedown="viewDiv()" class="sort-type__list-link">
+                                Review
+                            </button>
                         </li>
                     </ul>
-                    <div class="description__wrapper">
+                    <div class="description__wrapper" id="description__wrapper">
                         <p class="description__text">
                             The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. The ceramic cylinder planters come with a wooden stand to help elevate your plants off the ground. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.
                         </p>
@@ -166,7 +170,7 @@
             </div>
         </section>
         <section class="review" id="review">
-            <div class="row">
+            <div class="row" id="row">
                 <div class="single-form-left">
                     <!-- contact form grid -->
                     <div class="contact-single">
