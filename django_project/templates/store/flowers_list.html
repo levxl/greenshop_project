@@ -119,7 +119,7 @@
                         <div class="product__wrapper">
                             {% for flower in flowers_list %}
                             <div class="product-item">
-                                <a href="{% url 'store_detail' flower.url %}" class="product-item__img-wrapper">
+                                <a href="{{ flower.get_absolute_url }}" class="product-item__img-wrapper">
                                     <img src="{{ flower.img.url }}" alt="Plant" class="product-item__img">
                                 </a>
                                 <div class="product-item__hover-menu">

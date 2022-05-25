@@ -1152,6 +1152,7 @@ html {
   display: inline-block;
   width: 155px;
   height: 30px;
+  margin: 0 35%;
 }
 
 .rating > input {
@@ -1165,6 +1166,7 @@ html {
   float: right;
   background: url('../images/un-star.svg');
   background-size: 30px 30px;
+
 }
 
 .rating > label:before {
@@ -1176,13 +1178,17 @@ html {
   background: url('../images/star.svg');
   background-size: 30px 30px;
   transition: opacity 0.2s linear;
+
 }
 
 .rating > label:hover:before,  .rating > label:hover ~ label:before,  .rating:not(:hover) > :checked ~ label:before { opacity: 1; }
 
+
+
 .flowers-review  {
 margin: 0 1%;
 }
+
 .product-view__info-description {
   margin: 15px 0 0;
 }

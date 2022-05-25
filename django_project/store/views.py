@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import RatingForm
+from .forms import RatingForm, ReviewForm
 from django.views.generic.base import View
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import *
 
 
-def home(request):
-    return render(request, 'store/flowers_list.html')
+class Slider:
+    def get_flowers(self):
+        return Flowers.objects.all()
 
 class CategoryFilter:
     def get_category(self):
@@ -23,13 +24,9 @@ class FlowersListView(CategoryFilter, ListView):
     queryset = Flowers.objects.all()
 
 
-class FlowersDetailView(View):
-
-    def get(self, requset, slug):
-        flowersget = Flowers.objects.get(url=slug)
-        flowersall = Flowers.objects.all()
-        return render(requset, "store/store_detail.html", {"flowers": flowersall, 
-        "flowersget": flowersget })
+class FlowersDetailView(Slider, DetailView):
+    model = Flowers
+    slug_field = "url"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -66,6 +63,14 @@ class Search(ListView):
         return Flowers.objects.filter(title__icontains=self.request.GET.get("q"))
 
 class AddReview(View):
+    """Отзывы"""
     def post(self, request, pk):
-        print(request.POST)
-        return redirect("/")
+        form = ReviewForm(request.POST)
+        flowers = Flowers.objects.get(id=pk)
+        if form.is_valid():
+            form = form.save(commit=False)
+            if request.POST.get("parent", None):
+                form.parent_id = int(request.POST.get("parent"))
+            form.flowers = flowers
+            form.save()
+        return redirect(flowers.get_absolute_url())

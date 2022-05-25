@@ -50,3 +50,4 @@ function openDiv(){
     document.getElementById("description__wrapper").style.display = "block";
     document.getElementById("row").style.display = "none";
   };
+

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -27,20 +28,10 @@ class Flowers(models.Model):
     class Meta:
         verbose_name = 'Растения'
         verbose_name_plural = 'Растения'
+    
+    def get_absolute_url(self):
+        return reverse("flowers_detail", kwargs={"slug": self.url})
 
-
-class Reviews(models.Model):
-    """Отзывы"""
-    email = models.EmailField()
-    name = models.CharField("Имя", max_length=100)
-    text = models.TextField("Сообщение", max_length=5000)
-    parent = models.ForeignKey(
-        'self', verbose_name="Родитель", on_delete=models.SET_NULL, blank=True, null=True
-    )
-    flowers = models.ForeignKey(Flowers, verbose_name="цветок", on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.name} - {self.movie}"
 
     class Meta:
         verbose_name = "Отзыв"
@@ -71,3 +62,20 @@ class Rating(models.Model):
     class Meta:
         verbose_name = "Рейтинг"
         verbose_name_plural = "Рейтинги"
+
+class Reviews(models.Model):
+    """Отзывы"""
+    email = models.EmailField()
+    name = models.CharField("Имя", max_length=100)
+    text = models.TextField("Сообщение", max_length=5000)
+    parent = models.ForeignKey(
+        'self', verbose_name="Родитель", on_delete=models.SET_NULL, blank=True, null=True
+    )
+    flowers = models.ForeignKey(Flowers, verbose_name="цветок", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.name} - {self.flowers}"
+
+    class Meta:
+        verbose_name = "Отзыв"
+        verbose_name_plural = "Отзывы"
