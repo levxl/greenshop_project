@@ -24,7 +24,9 @@ class Flowers(models.Model):
     category = models.ForeignKey(
         Category, verbose_name="Категория", on_delete=models.SET_NULL, null=True
     )
-
+    
+    def get_review(self):
+        return self.reviews_set.filter(parent__isnull=True)
     class Meta:
         verbose_name = 'Растения'
         verbose_name_plural = 'Растения'

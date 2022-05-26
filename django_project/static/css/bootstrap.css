@@ -5,7 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
  :root {
-  --blue: #007bff;
+
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #e83e8c;
@@ -160,31 +160,11 @@ sup {
   top: -.5em;
 }
 
-a {
-  color: #007bff;
-  text-decoration: none;
-  background-color: transparent;
-  -webkit-text-decoration-skip: objects;
-}
 
-a:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
 
-a:not([href]):not([tabindex]) {
-  color: inherit;
-  text-decoration: none;
-}
 
-a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus {
-  color: inherit;
-  text-decoration: none;
-}
 
-a:not([href]):not([tabindex]):focus {
-  outline: 0;
-}
+
 
 pre,
 code,
@@ -478,8 +458,10 @@ mark,
 }
 
 .img-fluid {
-  max-width: 100%;
+  max-width: 10%;
   height: auto;
+  border-radius: 50px;
+
 }
 .img-movie-shots {
   max-width: 250px;
@@ -596,15 +578,7 @@ pre code {
   margin-left: auto;
 }
 
-.row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-}
+
 
 .no-gutters {
   margin-right: 0;
@@ -3088,6 +3062,9 @@ fieldset:disabled a.btn {
 .btn-block {
   display: block;
   width: 100%;
+
+  text-align: center;
+
 }
 
 .btn-block + .btn-block {
@@ -3097,7 +3074,7 @@ fieldset:disabled a.btn {
 input[type="submit"].btn-block,
 input[type="reset"].btn-block,
 input[type="button"].btn-block {
-  width: 100%;
+  width: 60%;
 }
 
 .fade {
@@ -5154,6 +5131,7 @@ tbody.collapse.show {
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: flex-start;
+  margin: 0 20%;
 }
 
 .media-body {
