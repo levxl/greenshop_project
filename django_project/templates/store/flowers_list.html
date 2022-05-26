@@ -55,7 +55,7 @@
                                             <li class="filter-bar__list-item">
                                                 <input type="checkbox" class="checked" name="category" value="category.">
                                                 <a href="" class="filter-bar__list-link">
-                                                  {{ category.name }}  <span class="filter-bar__list-counter">{{ category.amount }}</span>
+                                                  {{ category.name }}  <span class="filter-bar__list-counter">{{ flowers.category_set.count }}</span>
                                                 </a>
                                             </li>
                                     {% endfor %}

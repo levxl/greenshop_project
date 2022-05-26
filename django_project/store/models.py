@@ -5,7 +5,6 @@ from django.urls import reverse
 class Category(models.Model):
     """Категории"""
     name = models.CharField("Категория", max_length=150)
-    amount = models.CharField("Количество", max_length=20)
     url = models.SlugField(max_length=120, unique=True)
 
     def __str__(self):
@@ -24,20 +23,21 @@ class Flowers(models.Model):
     category = models.ForeignKey(
         Category, verbose_name="Категория", on_delete=models.SET_NULL, null=True
     )
-    
+
+    def __str__(self):
+        return self.title
+
     def get_review(self):
         return self.reviews_set.filter(parent__isnull=True)
-    class Meta:
-        verbose_name = 'Растения'
-        verbose_name_plural = 'Растения'
+   
     
     def get_absolute_url(self):
         return reverse("flowers_detail", kwargs={"slug": self.url})
 
 
     class Meta:
-        verbose_name = "Отзыв"
-        verbose_name_plural = "Отзывы"
+        verbose_name = 'Растения'
+        verbose_name_plural = 'Растения'
 
 class RatingStar(models.Model):
     """Звезда рейтинга"""
@@ -59,7 +59,7 @@ class Rating(models.Model):
     flowers = models.ForeignKey(Flowers, on_delete=models.CASCADE, verbose_name="цветок", related_name="ratings")
 
     def __str__(self):
-        return f"{self.star} - {self.movie}"
+        return f"{self.star} - {self.flowers}"
 
     class Meta:
         verbose_name = "Рейтинг"
