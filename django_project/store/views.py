@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import RatingForm, ReviewForm
@@ -14,12 +15,12 @@ class CategoryFilter:
     def get_category(self):
         return Category.objects.all()
 
-class FlowersView(CategoryFilter, ListView):
+class FlowersListView(CategoryFilter, ListView):
     def get(self, request):
         flowers = Flowers.objects.all()
         return render(request, "store/store_doc.html", {"store_doc" : flowers})
 
-class FlowersListView(CategoryFilter, ListView):
+class FlowersView(CategoryFilter, ListView):
     model = Flowers
     queryset = Flowers.objects.all()
 
@@ -74,3 +75,10 @@ class AddReview(View):
             form.flowers = flowers
             form.save()
         return redirect(flowers.get_absolute_url())
+
+class FilterFlowersView(CategoryFilter, ListView):
+   def get_queryset(self):
+        queryset = Flowers.objects.filter(
+            Q(year__in=self.request.GET.getlist("category")) 
+        ).distinct()
+        return queryset

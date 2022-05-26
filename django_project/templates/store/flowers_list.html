@@ -46,50 +46,56 @@
                             <img src="{% static 'images/burgerMenu.svg' %}" alt="Burger">
                             <p class="filter-bar__title">Choose filter</p>
                         </div>
-                        <div class="filter-bar__wrapper" id="filter-bar__wrapper">
-                            <div class="filter-bar__category">
-                                <h3 class="filter-bar__title">Categories</h3>
-                                <ul class="filter-bar__list">
-                                {% for category in view.get_category %}
-                                        <li class="filter-bar__list-item">
-                                            <a href="" class="filter-bar__list-link">
-                                              {{ category.name }}  <span class="filter-bar__list-counter">{{ category.amount }}</span>
-                                            </a>
-                                        </li>
-                                {% endfor %}
-                                </ul>
-                            </div>
-                            <div class="filter-bar__category">                                
-                                <h3 class="filter-bar__title">Price Range</h3>
-                                <div class="filter-bar__slider">
-                                    <form action="#">
-                                        <input type="text" class="filter-bar__range-slider">
-                                    </form>
-                                    <p class="filter-bar__price">Price: <span class="filter-bar__price-highlight highlight">$200 - $500</span></p>
-                                    <a href="#" class="filter-bar__button button">Filter</a>
+                        <form action="{% url 'filter' %}" method="get">
+                            <div class="filter-bar__wrapper" id="filter-bar__wrapper">
+                                <div class="filter-bar__category">
+                                    <h3 class="filter-bar__title">Categories</h3>
+                                    <ul class="filter-bar__list">
+                                    {% for category in view.get_category %}
+                                            <li class="filter-bar__list-item">
+                                                <input type="checkbox" class="checked" name="category" value="category.">
+                                                <a href="" class="filter-bar__list-link">
+                                                  {{ category.name }}  <span class="filter-bar__list-counter">{{ category.amount }}</span>
+                                                </a>
+                                            </li>
+                                    {% endfor %}
+                                    </ul>
+                                    <button type="submit">Найти</button>
+                                </div>
+                                
+                                <div class="filter-bar__category">                                
+                                    <h3 class="filter-bar__title">Price Range</h3>
+                                    <div class="filter-bar__slider">
+                                        <form action="#">
+                                            <input type="text" class="filter-bar__range-slider">
+                                        </ >
+                                        <p class="filter-bar__price">Price: <span class="filter-bar__price-highlight highlight">$200 - $500</span></p>
+                                        <a href="#" class="filter-bar__button button">Filter</a>
+                                    </div>
+                                </div>
+                                <div class="filter-bar__category">                                
+                                    <h3 class="filter-bar__title">Size</h3>
+                                    <ul class="filter-bar__list">
+                                            <li class="filter-bar__list-item">
+                                                <a href="#" class="filter-bar__list-link">
+                                                    Small<span class="filter-bar__list-counter">119</span>
+                                                </a>
+                                            </li>
+                                            <li class="filter-bar__list-item">
+                                                <a href="#" class="filter-bar__list-link">
+                                                    Medium<span class="filter-bar__list-counter">86</span>
+                                                </a>
+                                            </li>
+                                            <li class="filter-bar__list-item">
+                                                <a href="#" class="filter-bar__list-link">
+                                                    Large<span class="filter-bar__list-counter">78</span>
+                                                </a>
+                                            </li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="filter-bar__category">                                
-                                <h3 class="filter-bar__title">Size</h3>
-                                <ul class="filter-bar__list">
-                                        <li class="filter-bar__list-item">
-                                            <a href="#" class="filter-bar__list-link">
-                                                Small<span class="filter-bar__list-counter">119</span>
-                                            </a>
-                                        </li>
-                                        <li class="filter-bar__list-item">
-                                            <a href="#" class="filter-bar__list-link">
-                                                Medium<span class="filter-bar__list-counter">86</span>
-                                            </a>
-                                        </li>
-                                        <li class="filter-bar__list-item">
-                                            <a href="#" class="filter-bar__list-link">
-                                                Large<span class="filter-bar__list-counter">78</span>
-                                            </a>
-                                        </li>
-                                </ul>
-                            </div>
-                        </div>
+                        </form>
+                       
                         <a href="#" class="filter-bar__sale">
                             <img src="{% static 'images/Sale.png' %}" alt="Sale" class="filter-bar__img">
                         </a>
