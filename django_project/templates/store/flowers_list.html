@@ -12,7 +12,7 @@
                             <h3 class="slider__text">Welcome to GreenShop</h3>
                             <h1 class="slider__title">LET’S MAKE A BETTER <span class="highlight">PLANET</span></h1>
                             <p class="slider__subtitle">We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to create an unique Urban Jungle. Order your favorite plants!</p>
-                            <a href="{% url 'product' %}" class="slider__button button">SHOP NOW</a>
+                            <a href="s" class="slider__button button">SHOP NOW</a>
                         </div>
                         <img src="{% static 'images/sliderPlant.jpg' %}" alt="" class="slider__img">
                     </div>
@@ -21,7 +21,7 @@
                             <h3 class="slider__text">Welcome to GreenShop</h3>
                             <h1 class="slider__title">LET’S MAKE A BETTER <span class="highlight">PLANET</span></h1>
                             <p class="slider__subtitle">We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to create an unique Urban Jungle. Order your favorite plants!</p>
-                            <a href="{% url 'product' %}" class="slider__button button">SHOP NOW</a>
+                            <a href="" class="slider__button button">SHOP NOW</a>
                         </div>
                         <img src="{% static 'images/sliderPlant.jpg' %}" alt="" class="slider__img">
                     </div>
@@ -30,7 +30,7 @@
                             <h3 class="slider__text">Welcome to GreenShop</h3>
                             <h1 class="slider__title">LET’S MAKE A BETTER  <span class="highlight">PLANET</span></h1>
                             <p class="slider__subtitle">We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to create an unique Urban Jungle. Order your favorite plants!</p>
-                            <a href="{% url 'product' %}" class="slider__button button">SHOP NOW</a>
+                            <a href="" class="slider__button button">SHOP NOW</a>
                         </div>
                         <img src="{% static 'images/sliderPlant.jpg' %}" alt="" class="slider__img">
                     </div>
@@ -53,9 +53,9 @@
                                     <ul class="filter-bar__list">
                                     {% for category in view.get_category %}
                                             <li class="filter-bar__list-item">
-                                                <input type="checkbox" class="checked" name="category" value="category.">
+                                                <input type="checkbox" class="checked" name="category" value="category">
                                                 <a href="" class="filter-bar__list-link">
-                                                  {{ category.name }}  <span class="filter-bar__list-counter">{{ flowers.category_set.count }}</span>
+                                                  {{ category.name }}  <span class="filter-bar__list-counter">{{ flowers_list.category_set.count }}</span>
                                                 </a>
                                             </li>
                                     {% endfor %}

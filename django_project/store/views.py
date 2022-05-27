@@ -15,11 +15,6 @@ class CategoryFilter:
     def get_category(self):
         return Category.objects.all()
 
-class FlowersListView(CategoryFilter, ListView):
-    def get(self, request):
-        flowers = Flowers.objects.all()
-        return render(request, "store/store_doc.html", {"store_doc" : flowers})
-
 class FlowersView(CategoryFilter, ListView):
     model = Flowers
     queryset = Flowers.objects.all()
@@ -79,6 +74,6 @@ class AddReview(View):
 class FilterFlowersView(CategoryFilter, ListView):
    def get_queryset(self):
         queryset = Flowers.objects.filter(
-            Q(year__in=self.request.GET.getlist("category")) 
+            Q(category__in=self.request.GET.getlist("category")) 
         ).distinct()
         return queryset
