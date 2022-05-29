@@ -46,23 +46,24 @@
                             <img src="{% static 'images/burgerMenu.svg' %}" alt="Burger">
                             <p class="filter-bar__title">Choose filter</p>
                         </div>
-                        <form action="{% url 'filter' %}" method="get">
+                        <form action="{% url 'filter' %}" method="get" name="filter">
                             <div class="filter-bar__wrapper" id="filter-bar__wrapper">
                                 <div class="filter-bar__category">
                                     <h3 class="filter-bar__title">Categories</h3>
                                     <ul class="filter-bar__list">
                                     {% for category in view.get_category %}
                                             <li class="filter-bar__list-item">
-                                                <input type="checkbox" class="checked" name="category" value="category">
-                                                <a href="" class="filter-bar__list-link">
-                                                  {{ category.name }}  <span class="filter-bar__list-counter">{{ flowers_list.category_set.count }}</span>
-                                                </a>
+                                                <input type="checkbox" class="checked" name="category" value="{{ category.id }}">
+                                                <p class="filter-bar__list-link">
+                                                  {{ category.name }}  <span class="filter-bar__list-counter">{{ category.category_set.count }}</span>
+                                                </p>
+
                                             </li>
                                     {% endfor %}
                                     </ul>
-                                    <button type="submit">Найти</button>
+                                    
                                 </div>
-                                
+                                <button type="submit">Найти</button>
                                 <div class="filter-bar__category">                                
                                     <h3 class="filter-bar__title">Price Range</h3>
                                     <div class="filter-bar__slider">
