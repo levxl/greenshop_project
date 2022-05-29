@@ -7,6 +7,10 @@ from django.views.generic import ListView, DetailView
 from .models import *
 
 
+class Slider:
+    def get_flowers(self):
+        return Flowers.objects.all()
+    
 class CategoryFilter:
     def get_category(self):
         return Category.objects.all()
@@ -16,7 +20,7 @@ class FlowersView(CategoryFilter, ListView):
     queryset = Flowers.objects.all()
 
 
-class FlowersDetailView(CategoryFilter, DetailView):
+class FlowersDetailView(Slider, DetailView):
     model = Flowers
     slug_field = "url"
 
