@@ -7,6 +7,15 @@ from django.views.generic import ListView, DetailView
 from .models import *
 
 
+class Counter:
+    count = 0
+    def increment(self):
+        self.count += 1
+        return ''
+    def update_count(self):
+        self.count = 0
+        return ''
+
 class Slider:
     def get_flowers(self):
         return Flowers.objects.all()
@@ -15,7 +24,7 @@ class CategoryFilter:
     def get_category(self):
         return Category.objects.all()
 
-class FlowersView(CategoryFilter, ListView):
+class FlowersView(Counter, CategoryFilter, ListView):
     model = Flowers
     queryset = Flowers.objects.all()
 

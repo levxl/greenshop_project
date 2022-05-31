@@ -52,13 +52,19 @@
                                     <h3 class="filter-bar__title">Categories</h3>
                                     <ul class="filter-bar__list">
                                     {% for category in view.get_category %}
-                                            <li class="filter-bar__list-item">
-                                                <input type="checkbox" class="checked" name="category" value="{{ category.id }}">
-                                                <p class="filter-bar__list-link">
-                                                  {{ category.name }}  <span class="filter-bar__list-counter">{{ category.category_set.count }}</span>
-                                                </p>
-
-                                            </li>
+                                        <li class="filter-barlist-item">
+                                            <input type="checkbox" class="checked" name="category" value="category">
+                                            <a href="" class="filter-barlist-link">
+                                              {{ category.name }}
+                                              {% for flower in flowers_list %}
+                                                    {% if flower.category.name == category.name %}
+                                                        {{ view.increment  }}
+                                                    {% endif %}
+                                                {% endfor %}
+                                                <span class="filter-bar__list-counter">{{ view.count }}</span>
+                                                {{ view.update_count }}
+                                            </a>
+                                        </li>
                                     {% endfor %}
                                     </ul>
                                     
