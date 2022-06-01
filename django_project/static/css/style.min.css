@@ -1638,6 +1638,7 @@ a {
   -o-transition: box-shadow 0.4s;
   transition: box-shadow 0.4s;
   transition: box-shadow 0.4s, -webkit-box-shadow 0.4s;
+  border: none;
 }
 .button-login {
   cursor: pointer;

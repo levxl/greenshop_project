@@ -41,7 +41,6 @@
             <div class="container">
                 <div class="product-menu__inner">
                     <aside class="filter-bar">
-                        <form action="">
                         <div class="filter-bar__open-button" onclick="filterShow()">
                             <img src="{% static 'images/burgerMenu.svg' %}" alt="Burger">
                             <p class="filter-bar__title">Choose filter</p>
@@ -53,7 +52,7 @@
                                     <ul class="filter-bar__list">
                                     {% for category in view.get_category %}
                                         <li class="filter-barlist-item">
-                                            <input type="checkbox" class="checked" name="category" value="category">
+                                            <input type="checkbox" class="checked" name="category" value="{{ category.id }}">
                                             <a href="" class="filter-barlist-link">
                                               {{ category.name }}
                                               {% for flower in flowers_list %}
@@ -69,11 +68,10 @@
                                     </ul>
                                     
                                 </div>
-                                <button type="submit">Найти</button>
+                                <button type="submit" class="filter-bar__button button">Найти</button>
                                 <div class="filter-bar__category">                                
                                     <h3 class="filter-bar__title">Price Range</h3>
                                     <div class="filter-bar__slider">
-                                        <form action="#">
                                             <input type="text" class="filter-bar__range-slider">
                                         </ >
                                         <p class="filter-bar__price">Price: <span class="filter-bar__price-highlight highlight">$200 - $500</span></p>
@@ -106,7 +104,7 @@
                         <a href="#" class="filter-bar__sale">
                             <img src="{% static 'images/Sale.png' %}" alt="Sale" class="filter-bar__img">
                         </a>
-                    </form>
+
                     </aside>
                     <div class="product">
                         <div class="sort-type">

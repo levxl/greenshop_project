@@ -24,7 +24,7 @@ class CategoryFilter:
     def get_category(self):
         return Category.objects.all()
 
-class FlowersView(Counter, CategoryFilter, ListView):
+class FlowersView(CategoryFilter, ListView, Counter):
     model = Flowers
     queryset = Flowers.objects.all()
 
@@ -80,7 +80,7 @@ class AddReview(View):
             form.save()
         return redirect(flowers.get_absolute_url())
 
-class FilterFlowersView(CategoryFilter, ListView):
+class FilterFlowersView(CategoryFilter, ListView, Counter):
    def get_queryset(self):
         queryset = Flowers.objects.filter(
             Q(category__in=self.request.GET.getlist("category")) 
