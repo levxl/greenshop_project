@@ -27,6 +27,7 @@ class CategoryFilter:
 class FlowersView(CategoryFilter, ListView, Counter):
     model = Flowers
     queryset = Flowers.objects.all()
+    paginate_by = 6
 
 
 class FlowersDetailView(Slider, DetailView):
@@ -81,8 +82,14 @@ class AddReview(View):
         return redirect(flowers.get_absolute_url())
 
 class FilterFlowersView(CategoryFilter, ListView, Counter):
+   paginate_by = 3
+
    def get_queryset(self):
         queryset = Flowers.objects.filter(
             Q(category__in=self.request.GET.getlist("category")) 
         ).distinct()
         return queryset
+   def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context["category"] = ''.join([f"category={x}&" for x in self.request.GET.getlist("category")])
+        return context

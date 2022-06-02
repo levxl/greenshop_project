@@ -169,24 +169,9 @@
                             {% endfor %}
                         <div class="page-counter">
                             <ul class="page-counter__list">
-                                <li class="page-counter__list-item">
-                                    <a href="#" class="page-counter__list-link">1</a>
-                                </li>
-                                <li class="page-counter__list-item">
-                                    <a href="#" class="page-counter__list-link">2</a>
-                                </li>
-                                <li class="page-counter__list-item">
-                                    <a href="#" class="page-counter__list-link">3</a>
-                                </li>
-                                <li class="page-counter__list-item">
-                                    <a href="#" class="page-counter__list-link">4</a>
-                                </li>
-                                <li class="page-counter__list-item">
-                                    <a href="#" class="page-counter__list-link">
-                                        <img src="{% static 'images/nextArrow.svg' %}" alt="next" class="page-counter__list-img">
-                                    </a>
-                                </li>
-                            </ul>
+                                    <div class="grid-img-right mt-4 text-right bg bg1" >
+                                        {% include 'include/pagination.html' %}
+                                    </div>
                         </div>
                         
                     </div>

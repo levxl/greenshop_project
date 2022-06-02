@@ -3,3 +3,5 @@
 -pip3 install pillow
 
 -pip3 install django-allauth
+
+-pip3 install django-modeltranslation

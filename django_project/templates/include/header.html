@@ -1,4 +1,4 @@
-{% load static  %}
+{% load static i18n %}
 <header class="header">
     <div class="container">
         <div class="header__inner header__desktop">
@@ -49,11 +49,22 @@
                             </div>
                             <ul class="popup__list">
                                 <li class="popup__list-item">
-                                    <a href="#" class="popup__list-button" onclick="loginMenu()">Login</a>
+                                {% if user.is_authenticated %}
+                                
+                                    <a href="{% url 'account_logout' %}" class="popup__list-button" onclick="loginMenu()">Logout</a>
+                                {% else %}
+                                    <a href="{% url 'account_login' %}" class="popup__list-button" onclick="loginMenu()">Login</a>
+                                
+                                {% endif %}
                                 </li>
+                                {% if user.is_authenticated %}
                                 <li class="popup__list-item">
-                                    <a href="#" class="popup__list-button" onclick="registerMenu()">Register</a>
+                                    <span class="user-list__link button-login">{{ user.username }}</span>
+                                {% else %}
+                                    <a href="{% url 'account_signup' %}" class="popup__list-button" onclick="registerMenu()">Register</a>
                                 </li>
+                                {% endif %}
+                                
                             </ul>
                             <div class="popup__login">
                                 <p class="popup__text">Enter your email and password to login.</p>
@@ -138,7 +149,11 @@
                                 </div>
                                 <ul class="popup__list">
                                     <li class="popup__list-item">
-                                        <a href="#" class="popup__list-button" onclick="loginMenu()">Login</a>
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url 'account_logout' %}" class="popup__list-button" onclick="loginMenu()">Logout</a>
+                                    {% else %}
+                                        <a href="{% url 'account_login' %}" class="popup__list-button" onclick="loginMenu()">Login</a>
+                                    {% endif %}
                                     </li>
                                     <li class="popup__list-item">
                                         <a href="#" class="popup__list-button" onclick="registerMenu()">Register</a>
