@@ -1,9 +1,9 @@
 from django.db.models import Q
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import redirect
 from .forms import RatingForm, ReviewForm
 from django.views.generic.base import View
 from django.views.generic import ListView, DetailView
+from django.http import JsonResponse, HttpResponse
 from .models import *
 
 
@@ -40,8 +40,6 @@ class FlowersDetailView(Slider, DetailView):
         return context
 
 class AddStarRating(View):
-    """Добавление рейтинга цветам"""
-
     def get_client_ip(self, request):
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
         if x_forwarded_for:
@@ -93,3 +91,4 @@ class FilterFlowersView(CategoryFilter, ListView, Counter):
         context = super().get_context_data(*args, **kwargs)
         context["category"] = ''.join([f"category={x}&" for x in self.request.GET.getlist("category")])
         return context
+
